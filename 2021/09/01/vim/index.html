@@ -1,247 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Head tag -->
 <head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
-    <!--Description-->
-
-    
-
-    
-        <meta name="description" content="这里存放我的 Vim 使用笔记、配置等，将会持续更新。
-截图
-基本快捷键复制/粘贴/剪切/删除
-ggyG 拷贝整个文件
-yaw 复制当前单词
-d$ 删除行内光标后面的内容
-dd 剪切当前行
-“*yy 复制当前行到剪贴板
-“*yG 复制整个文件到剪贴板
-
-跳转移动
-gg 跳转到文件首部
-G 跳转到文件"/>
-    
-
-    <!--Author-->
-    
-        <meta name="author" content="liangjunmo"/>
-    
-
-    <!--Open Graph Title-->
-    
-        <meta property="og:title" content="Vim 手册"/>
-    
-
-    <!--Open Graph Description-->
-    
-        <meta property="og:description" content="这里存放我的 Vim 使用笔记、配置等，将会持续更新。
-截图
-基本快捷键复制/粘贴/剪切/删除
-ggyG 拷贝整个文件
-yaw 复制当前单词
-d$ 删除行内光标后面的内容
-dd 剪切当前行
-“*yy 复制当前行到剪贴板
-“*yG 复制整个文件到剪贴板
-
-跳转移动
-gg 跳转到文件首部
-G 跳转到文件"/>
-    
-
-    <!--Open Graph Site Name-->
-        <meta property="og:site_name" content="liangjunmo&#39;s blog"/>
-
-    <!--Type page-->
-    
-        <meta property="og:type" content="article"/>
-    
-
-    <!--Page Cover-->
-    
-    
-        <meta property="og:image" content="https://liangjunmo.comimg/home-bg.jpg"/>
-    
-
-        <meta name="twitter:card" content="summary_large_image"/>
-
-    
-
-    
-        <meta name="twitter:image" content="https://liangjunmo.comimg/home-bg.jpg"/>
-    
-
-    <!-- Title -->
-    
-    <title>Vim 手册 - liangjunmo&#39;s blog</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
-
-    <!-- Custom CSS -->
-    
-<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
-    <!-- Custom Fonts -->
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="//fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css"/>
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css"/>
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="//oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="//oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"liangjunmo.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
 
-    <!-- Gallery -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.css" type="text/css" rel="stylesheet"/>
+  <meta name="description" content="这里存放我的 Vim 使用笔记、配置等，将会持续更新。 截图 基本快捷键复制&#x2F;粘贴&#x2F;剪切&#x2F;删除 ggyG 拷贝整个文件 yaw 复制当前单词 d$ 删除行内光标后面的内容 dd 剪切当前行 “*yy 复制当前行到剪贴板 “*yG 复制整个文件到剪贴板  跳转移动 gg 跳转到文件首部 G 跳转到文件末尾 ^ 跳转到行首 $ 跳转到行尾 w 跳转到下个单词首部 e 跳转到最近距离的单词末尾 b 跳转">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vim 手册">
+<meta property="og:url" content="https://liangjunmo.com/2021/09/01/vim/index.html">
+<meta property="og:site_name" content="liangjunmo&#39;s blog">
+<meta property="og:description" content="这里存放我的 Vim 使用笔记、配置等，将会持续更新。 截图 基本快捷键复制&#x2F;粘贴&#x2F;剪切&#x2F;删除 ggyG 拷贝整个文件 yaw 复制当前单词 d$ 删除行内光标后面的内容 dd 剪切当前行 “*yy 复制当前行到剪贴板 “*yG 复制整个文件到剪贴板  跳转移动 gg 跳转到文件首部 G 跳转到文件末尾 ^ 跳转到行首 $ 跳转到行尾 w 跳转到下个单词首部 e 跳转到最近距离的单词末尾 b 跳转">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/09/01/N5eVtjq1J79TOAW.jpg">
+<meta property="article:published_time" content="2021-08-31T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-08-31T18:52:49.642Z">
+<meta property="article:author" content="liangjunmo">
+<meta property="article:tag" content="vim">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/09/01/N5eVtjq1J79TOAW.jpg">
 
-    <!-- Google Analytics -->
-    
+<link rel="canonical" href="https://liangjunmo.com/2021/09/01/vim/">
 
 
-    <!-- favicon -->
-    
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
 
-<meta name="generator" content="Hexo 5.4.0"></head>
+  <title>Vim 手册 | liangjunmo's blog</title>
+  
 
 
-<body>
 
-    <!-- Menu -->
-    <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">liangjunmo's blog</a>
-        </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                
-                    <li>
-                        <a href="/">
-                            
-                                Home
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/archives">
-                            
-                                Archives
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/tags">
-                            
-                                Tags
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/categories">
-                            
-                                Categories
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a href="/about">
-                            
-                                About
-                            
-                        </a>
-                    </li>
-                
-                    <li>
-                        <a target="_blank" rel="noopener" href="https://github.com/liangjunmo">
-                            
-                                <i class="fa fa-github fa-stack-2x"></i>
-                            
-                        </a>
-                    </li>
-                
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
     </div>
-    <!-- /.container -->
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">liangjunmo's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">1</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">0</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">1</span></a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>About</a>
+
+  </li>
+  </ul>
 </nav>
 
-    <!-- Main Content -->
-    <!-- Page Header -->
-<!-- Set your background image for this header in your post front-matter: cover -->
 
-<header class="intro-header" style="background-image: url('/img/home-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <h1>Vim 手册</h1>
-                    
-                    <span class="meta">
-                        <!-- Date and Author -->
-                        
-                        
-                            2021-09-01
-                        
-                    </span>
-                </div>
-            </div>
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://liangjunmo.com/2021/09/01/vim/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://i.loli.net/2021/09/01/WTUbpda21jx5uOw.jpg">
+      <meta itemprop="name" content="liangjunmo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liangjunmo's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Vim 手册
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-09-01 00:00:00 / Modified: 02:52:49" itemprop="dateCreated datePublished" datetime="2021-09-01T00:00:00+08:00">2021-09-01</time>
+            </span>
+
+          
+
         </div>
-    </div>
-</header>
+      </header>
 
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-            <!-- Tags and categories -->
-           
-                <div class="col-lg-4 col-lg-offset-2 col-md-5 col-md-offset-1 post-tags">
-                    
-                        
-
-
-<a href="/tags/vim/">#vim</a>
-
-
-                    
-                </div>
-                <div class="col-lg-4 col-md-5 post-categories">
-                    
-                </div>
-            
-
-            <!-- Gallery -->
-            
-
-            <!-- Post Main Content -->
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <p>这里存放我的 Vim 使用笔记、配置等，将会持续更新。</p>
+      
+        <p>这里存放我的 Vim 使用笔记、配置等，将会持续更新。</p>
 <h2 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h2><p><img src="https://i.loli.net/2021/09/01/N5eVtjq1J79TOAW.jpg" alt="vim.jpg"></p>
 <h2 id="基本快捷键"><a href="#基本快捷键" class="headerlink" title="基本快捷键"></a>基本快捷键</h2><h3 id="复制-粘贴-剪切-删除"><a href="#复制-粘贴-剪切-删除" class="headerlink" title="复制/粘贴/剪切/删除"></a>复制/粘贴/剪切/删除</h3><ul>
 <li>ggyG 拷贝整个文件</li>
@@ -290,14 +255,14 @@ G 跳转到文件"/>
 <li>* 向下跳转到与所在单词匹配的下一个单词</li>
 <li># 向上跳转到与所在单词匹配的下一个单词</li>
 </ul>
-<h2 id="插件及配置"><a href="#插件及配置" class="headerlink" title="插件及配置"></a>插件及配置</h2><h3 id="安装-vim-plug-管理插件"><a href="#安装-vim-plug-管理插件" class="headerlink" title="安装 vim-plug 管理插件"></a>安装 vim-plug 管理插件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fLo ~/.vim/autoload/plug.vim --create-dirs [&lt;https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim&gt;](&lt;https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim&gt;)</span><br></pre></td></tr></table></figure>
+<h2 id="插件及配置"><a href="#插件及配置" class="headerlink" title="插件及配置"></a>插件及配置</h2><h3 id="安装-vim-plug-管理插件"><a href="#安装-vim-plug-管理插件" class="headerlink" title="安装 vim-plug 管理插件"></a>安装 vim-plug 管理插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fLo ~/.vim/<span class="built_in">autoload</span>/plug.vim --create-dirs [&lt;https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim&gt;](&lt;https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim&gt;)</span><br></pre></td></tr></table></figure>
 
-<h3 id="修改配置文件-vimrc"><a href="#修改配置文件-vimrc" class="headerlink" title="修改配置文件 ~/.vimrc"></a>修改配置文件 ~/.vimrc</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">call plug#begin(&#x27;~/.vim/plugged&#x27;)</span><br><span class="line"></span><br><span class="line">let mapleader = &quot;,&quot;</span><br><span class="line"></span><br><span class="line">Plug &#x27;fatih/vim-go&#x27;, &#123; &#x27;do&#x27;: &#x27;:GoUpdateBinaries&#x27; &#125;</span><br><span class="line"></span><br><span class="line">let g:go_fmt_command = &quot;goimports&quot;</span><br><span class="line"></span><br><span class="line">autocmd FileType go nmap &lt;silent&gt; &lt;Leader&gt;t &lt;Plug&gt;(go-def-tab)</span><br><span class="line">autocmd FileType go nmap &lt;silent&gt; &lt;Leader&gt;s &lt;Plug&gt;(go-def-split)</span><br><span class="line">autocmd FileType go nmap &lt;silent&gt; &lt;Leader&gt;v &lt;Plug&gt;(go-def-vertical)</span><br><span class="line">autocmd FileType go nmap &lt;silent&gt; &lt;Leader&gt;d &lt;Plug&gt;(go-doc)</span><br><span class="line">autocmd FileType go nmap &lt;silent&gt; &lt;Leader&gt;i &lt;Plug&gt;(go-info)</span><br><span class="line">let g:go_doc_keywordprg_enabled = 0</span><br><span class="line"></span><br><span class="line">Plug &#x27;preservim/nerdtree&#x27;</span><br><span class="line"></span><br><span class="line">autocmd StdinReadPre * let s:std_in=1</span><br><span class="line"></span><br><span class="line">&quot; Start NERDTree when Vim is started without file arguments.</span><br><span class="line">autocmd VimEnter * if argc() == 0 &amp;&amp; !exists(&#x27;s:std_in&#x27;) | NERDTree | endif</span><br><span class="line"></span><br><span class="line">&quot; Start NERDTree when Vim starts with a directory argument.</span><br><span class="line">autocmd VimEnter * if argc() == 1 &amp;&amp; isdirectory(argv()[0]) &amp;&amp; !exists(&#x27;s:std_in&#x27;) |</span><br><span class="line">    \\ execute &#x27;NERDTree&#x27; argv()[0] | wincmd p | enew | execute &#x27;cd &#x27;.argv()[0] | endif</span><br><span class="line"></span><br><span class="line">nnoremap &lt;C-n&gt; :NERDTreeToggle&lt;CR&gt;</span><br><span class="line">noremap &lt;S-h&gt; &lt;C-w&gt;&lt;C-h&gt;</span><br><span class="line">noremap &lt;S-j&gt; &lt;C-w&gt;&lt;C-j&gt;</span><br><span class="line">noremap &lt;S-k&gt; &lt;C-w&gt;&lt;C-k&gt;</span><br><span class="line">noremap &lt;S-l&gt; &lt;C-w&gt;&lt;C-l&gt;</span><br><span class="line"></span><br><span class="line">Plug &#x27;Xuyuanp/nerdtree-git-plugin&#x27;</span><br><span class="line"></span><br><span class="line">Plug &#x27;airblade/vim-gitgutter&#x27;</span><br><span class="line"></span><br><span class="line">set updatetime=1000</span><br><span class="line"></span><br><span class="line">Plug &#x27;majutsushi/tagbar&#x27;</span><br><span class="line"></span><br><span class="line">nnoremap &lt;silent&gt; &lt;F8&gt; :TagbarToggle&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">Plug &#x27;itchyny/vim-gitbranch&#x27;</span><br><span class="line"></span><br><span class="line">Plug &#x27;itchyny/lightline.vim&#x27;</span><br><span class="line"></span><br><span class="line">let g:lightline = &#123;</span><br><span class="line">      \\ &#x27;active&#x27;: &#123;</span><br><span class="line">      \\   &#x27;left&#x27;: [ [ &#x27;mode&#x27;, &#x27;paste&#x27; ],</span><br><span class="line">      \\             [ &#x27;gitbranch&#x27;, &#x27;readonly&#x27;, &#x27;filename&#x27;, &#x27;modified&#x27; ] ],</span><br><span class="line">      \\   &#x27;right&#x27;: [ [ &#x27;lineinfo&#x27; ],</span><br><span class="line">      \\              [ &#x27;percent&#x27; ],</span><br><span class="line">      \\              [ &#x27;fileformat&#x27;, &#x27;fileencoding&#x27;, &#x27;filetype&#x27;] ]</span><br><span class="line">      \\ &#125;,</span><br><span class="line">      \\ &#x27;component_function&#x27;: &#123;</span><br><span class="line">      \\   &#x27;filename&#x27;: &#x27;LightlineFilename&#x27;,</span><br><span class="line">      \\   &#x27;gitbranch&#x27;: &#x27;gitbranch#name&#x27;</span><br><span class="line">      \\ &#125;,</span><br><span class="line">      \\ &#x27;colorscheme&#x27;: &#x27;tender&#x27;</span><br><span class="line">      \\ &#125;</span><br><span class="line"></span><br><span class="line">function! LightlineFilename()</span><br><span class="line">  let root = fnamemodify(get(b:, &#x27;git_dir&#x27;), &#x27;:h&#x27;)</span><br><span class="line">  let path = expand(&#x27;%:p&#x27;)</span><br><span class="line">  if path[:len(root)-1] ==# root</span><br><span class="line">    return path[len(root)+1:]</span><br><span class="line">  endif</span><br><span class="line">  return expand(&#x27;%&#x27;)</span><br><span class="line">endfunction</span><br><span class="line"></span><br><span class="line">Plug &#x27;ctrlpvim/ctrlp.vim&#x27;</span><br><span class="line"></span><br><span class="line">Plug &#x27;jacoborus/tender.vim&#x27;</span><br><span class="line"></span><br><span class="line">call plug#end()</span><br><span class="line"></span><br><span class="line">&quot; If you have vim &gt;=8.0 or Neovim &gt;= 0.1.5</span><br><span class="line">if (has(&quot;termguicolors&quot;))</span><br><span class="line"> set termguicolors</span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line">xnoremap p pgvy</span><br><span class="line">colorscheme tender</span><br><span class="line">syntax enable</span><br><span class="line">set re=2</span><br><span class="line">set nu</span><br><span class="line">set tabstop=4</span><br><span class="line">set shiftwidth=4</span><br><span class="line">set expandtab</span><br><span class="line">set cursorline</span><br><span class="line">set cursorcolumn</span><br><span class="line">highlight OverLength ctermbg=red ctermfg=white guibg=#592929</span><br><span class="line">match OverLength /\\%121v.\\+/</span><br></pre></td></tr></table></figure>
+<h3 id="修改配置文件-vimrc"><a href="#修改配置文件-vimrc" class="headerlink" title="修改配置文件 ~/.vimrc"></a>修改配置文件 ~/.vimrc</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">call plug<span class="comment">#begin(&#x27;~/.vim/plugged&#x27;)</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> mapleader = <span class="string">&quot;,&quot;</span></span><br><span class="line"></span><br><span class="line">Plug <span class="string">&#x27;fatih/vim-go&#x27;</span>, &#123; <span class="string">&#x27;do&#x27;</span>: <span class="string">&#x27;:GoUpdateBinaries&#x27;</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> g:go_fmt_command = <span class="string">&quot;goimports&quot;</span></span><br><span class="line"></span><br><span class="line">autocmd FileType go nmap &lt;silent&gt; &lt;Leader&gt;t &lt;Plug&gt;(go-def-tab)</span><br><span class="line">autocmd FileType go nmap &lt;silent&gt; &lt;Leader&gt;s &lt;Plug&gt;(go-def-split)</span><br><span class="line">autocmd FileType go nmap &lt;silent&gt; &lt;Leader&gt;v &lt;Plug&gt;(go-def-vertical)</span><br><span class="line">autocmd FileType go nmap &lt;silent&gt; &lt;Leader&gt;d &lt;Plug&gt;(go-doc)</span><br><span class="line">autocmd FileType go nmap &lt;silent&gt; &lt;Leader&gt;i &lt;Plug&gt;(go-info)</span><br><span class="line"><span class="built_in">let</span> g:go_doc_keywordprg_enabled = 0</span><br><span class="line"></span><br><span class="line">Plug <span class="string">&#x27;preservim/nerdtree&#x27;</span></span><br><span class="line"></span><br><span class="line">autocmd StdinReadPre * <span class="built_in">let</span> s:std_in=1</span><br><span class="line"></span><br><span class="line"><span class="string">&quot; Start NERDTree when Vim is started without file arguments.</span></span><br><span class="line"><span class="string">autocmd VimEnter * if argc() == 0 &amp;&amp; !exists(&#x27;s:std_in&#x27;) | NERDTree | endif</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;</span> Start NERDTree when Vim starts with a directory argument.</span><br><span class="line">autocmd VimEnter * <span class="keyword">if</span> argc() == 1 &amp;&amp; isdirectory(argv()[0]) &amp;&amp; !exists(<span class="string">&#x27;s:std_in&#x27;</span>) |</span><br><span class="line">    \\ execute <span class="string">&#x27;NERDTree&#x27;</span> argv()[0] | wincmd p | enew | execute <span class="string">&#x27;cd &#x27;</span>.argv()[0] | endif</span><br><span class="line"></span><br><span class="line">nnoremap &lt;C-n&gt; :NERDTreeToggle&lt;CR&gt;</span><br><span class="line">noremap &lt;S-h&gt; &lt;C-w&gt;&lt;C-h&gt;</span><br><span class="line">noremap &lt;S-j&gt; &lt;C-w&gt;&lt;C-j&gt;</span><br><span class="line">noremap &lt;S-k&gt; &lt;C-w&gt;&lt;C-k&gt;</span><br><span class="line">noremap &lt;S-l&gt; &lt;C-w&gt;&lt;C-l&gt;</span><br><span class="line"></span><br><span class="line">Plug <span class="string">&#x27;Xuyuanp/nerdtree-git-plugin&#x27;</span></span><br><span class="line"></span><br><span class="line">Plug <span class="string">&#x27;airblade/vim-gitgutter&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> updatetime=1000</span><br><span class="line"></span><br><span class="line">Plug <span class="string">&#x27;majutsushi/tagbar&#x27;</span></span><br><span class="line"></span><br><span class="line">nnoremap &lt;silent&gt; &lt;F8&gt; :TagbarToggle&lt;CR&gt;</span><br><span class="line"></span><br><span class="line">Plug <span class="string">&#x27;itchyny/vim-gitbranch&#x27;</span></span><br><span class="line"></span><br><span class="line">Plug <span class="string">&#x27;itchyny/lightline.vim&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">let</span> g:lightline = &#123;</span><br><span class="line">      \\ <span class="string">&#x27;active&#x27;</span>: &#123;</span><br><span class="line">      \\   <span class="string">&#x27;left&#x27;</span>: [ [ <span class="string">&#x27;mode&#x27;</span>, <span class="string">&#x27;paste&#x27;</span> ],</span><br><span class="line">      \\             [ <span class="string">&#x27;gitbranch&#x27;</span>, <span class="string">&#x27;readonly&#x27;</span>, <span class="string">&#x27;filename&#x27;</span>, <span class="string">&#x27;modified&#x27;</span> ] ],</span><br><span class="line">      \\   <span class="string">&#x27;right&#x27;</span>: [ [ <span class="string">&#x27;lineinfo&#x27;</span> ],</span><br><span class="line">      \\              [ <span class="string">&#x27;percent&#x27;</span> ],</span><br><span class="line">      \\              [ <span class="string">&#x27;fileformat&#x27;</span>, <span class="string">&#x27;fileencoding&#x27;</span>, <span class="string">&#x27;filetype&#x27;</span>] ]</span><br><span class="line">      \\ &#125;,</span><br><span class="line">      \\ <span class="string">&#x27;component_function&#x27;</span>: &#123;</span><br><span class="line">      \\   <span class="string">&#x27;filename&#x27;</span>: <span class="string">&#x27;LightlineFilename&#x27;</span>,</span><br><span class="line">      \\   <span class="string">&#x27;gitbranch&#x27;</span>: <span class="string">&#x27;gitbranch#name&#x27;</span></span><br><span class="line">      \\ &#125;,</span><br><span class="line">      \\ <span class="string">&#x27;colorscheme&#x27;</span>: <span class="string">&#x27;tender&#x27;</span></span><br><span class="line">      \\ &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span>! LightlineFilename()</span><br><span class="line">  <span class="built_in">let</span> root = fnamemodify(get(b:, <span class="string">&#x27;git_dir&#x27;</span>), <span class="string">&#x27;:h&#x27;</span>)</span><br><span class="line">  <span class="built_in">let</span> path = expand(<span class="string">&#x27;%:p&#x27;</span>)</span><br><span class="line">  <span class="keyword">if</span> path[:len(root)-1] ==<span class="comment"># root</span></span><br><span class="line">    <span class="built_in">return</span> path[len(root)+1:]</span><br><span class="line">  endif</span><br><span class="line">  <span class="built_in">return</span> expand(<span class="string">&#x27;%&#x27;</span>)</span><br><span class="line">endfunction</span><br><span class="line"></span><br><span class="line">Plug <span class="string">&#x27;ctrlpvim/ctrlp.vim&#x27;</span></span><br><span class="line"></span><br><span class="line">Plug <span class="string">&#x27;jacoborus/tender.vim&#x27;</span></span><br><span class="line"></span><br><span class="line">call plug<span class="comment">#end()</span></span><br><span class="line"></span><br><span class="line"><span class="string">&quot; If you have vim &gt;=8.0 or Neovim &gt;= 0.1.5</span></span><br><span class="line"><span class="string">if (has(&quot;</span>termguicolors<span class="string">&quot;))</span></span><br><span class="line"><span class="string"> set termguicolors</span></span><br><span class="line"><span class="string">endif</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">xnoremap p pgvy</span></span><br><span class="line"><span class="string">colorscheme tender</span></span><br><span class="line"><span class="string">syntax enable</span></span><br><span class="line"><span class="string">set re=2</span></span><br><span class="line"><span class="string">set nu</span></span><br><span class="line"><span class="string">set tabstop=4</span></span><br><span class="line"><span class="string">set shiftwidth=4</span></span><br><span class="line"><span class="string">set expandtab</span></span><br><span class="line"><span class="string">set cursorline</span></span><br><span class="line"><span class="string">set cursorcolumn</span></span><br><span class="line"><span class="string">highlight OverLength ctermbg=red ctermfg=white guibg=#592929</span></span><br><span class="line"><span class="string">match OverLength /\\%121v.\\+/</span></span><br></pre></td></tr></table></figure>
 
 <h3 id="安装插件和依赖"><a href="#安装插件和依赖" class="headerlink" title="安装插件和依赖"></a>安装插件和依赖</h3><p>打开 Vim，执行 <code>:PlugInstall</code>，等待插件安装完成。</p>
 <p>打开 Vim，执行 <code>:GoInstallBinaries</code>，安装 <code>fatih/vim-go</code> 依赖的 Go packages。</p>
 <h3 id="安装-ctags"><a href="#安装-ctags" class="headerlink" title="安装 ctags"></a>安装 ctags</h3><p>tagbar 依赖 ctags，下面是手动编译安装方法。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -O &lt;https://udomain.dl.sourceforge.net/project/ctags/ctags/5.8/ctags-5.8.tar.gz&gt;</span><br><span class="line">tar -zxvf ctags-5.8.tar.gz</span><br><span class="line">cd ctags-5.8</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -O &lt;https://udomain.dl.sourceforge.net/project/ctags/ctags/5.8/ctags-5.8.tar.gz&gt;</span><br><span class="line">tar -zxvf ctags-5.8.tar.gz</span><br><span class="line"><span class="built_in">cd</span> ctags-5.8</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
 
 <h3 id="插件快捷键"><a href="#插件快捷键" class="headerlink" title="插件快捷键"></a>插件快捷键</h3><ul>
 <li>ctrl-] or gd 跳转到定义</li>
@@ -310,67 +275,213 @@ G 跳转到文件"/>
 <li>,hu git undo</li>
 </ul>
 
-
-                
-            </div>
-
-            <!-- Comments -->
-            
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                    
-
-
-                </div>
-            
-        </div>
     </div>
-</article>
 
-    <!-- Footer -->
-    <hr />
-
-<!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-
-                    
-                </ul>
-                <p class="copyright text-muted">&copy; 2021 liangjunmo<br></p>
-                <p class="copyright text-muted">Original Theme <a target="_blank" href="http://startbootstrap.com/template-overviews/clean-blog/">Clean Blog</a> from <a href="http://startbootstrap.com/" target="_blank">Start Bootstrap</a></p>
-                <p class="copyright text-muted">Adapted for <a target="_blank" href="https://hexo.io/">Hexo</a> by <a href="http://www.codeblocq.com/" target="_blank">Jonathan Klughertz</a></p>
-            </div>
-        </div>
-    </div>
-</footer>
-
-
-    <!-- After footer scripts -->
     
-<!-- jQuery -->
-<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    
+    
+        
 
-<!-- Bootstrap -->
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:  </strong>liangjunmo
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link: </strong>
+    <a href="https://liangjunmo.com/2021/09/01/vim/" title="Vim 手册">https://liangjunmo.com/2021/09/01/vim/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
 
-<!-- Gallery -->
-<script src="//cdnjs.cloudflare.com/ajax/libs/featherlight/1.3.5/featherlight.min.js" type="text/javascript" charset="utf-8"></script>
 
-<!-- Disqus Comments -->
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/vim/" rel="tag"><i class="fa fa-tag"></i> vim</a>
+          </div>
+
+        
 
 
+        
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%AA%E5%9B%BE"><span class="nav-number">1.</span> <span class="nav-text">截图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">2.</span> <span class="nav-text">基本快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6-%E7%B2%98%E8%B4%B4-%E5%89%AA%E5%88%87-%E5%88%A0%E9%99%A4"><span class="nav-number">2.1.</span> <span class="nav-text">复制&#x2F;粘贴&#x2F;剪切&#x2F;删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%B3%E8%BD%AC%E7%A7%BB%E5%8A%A8"><span class="nav-number">2.2.</span> <span class="nav-text">跳转移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8C%E5%86%85%E6%90%9C%E7%B4%A2%E7%A7%BB%E5%8A%A8"><span class="nav-number">2.3.</span> <span class="nav-text">行内搜索移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BF%BB%E9%A1%B5"><span class="nav-number">2.4.</span> <span class="nav-text">翻页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2"><span class="nav-number">2.5.</span> <span class="nav-text">正则替换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2"><span class="nav-number">2.6.</span> <span class="nav-text">搜索</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E5%8F%8A%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">插件及配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-vim-plug-%E7%AE%A1%E7%90%86%E6%8F%92%E4%BB%B6"><span class="nav-number">3.1.</span> <span class="nav-text">安装 vim-plug 管理插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-vimrc"><span class="nav-number">3.2.</span> <span class="nav-text">修改配置文件 ~&#x2F;.vimrc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6%E5%92%8C%E4%BE%9D%E8%B5%96"><span class="nav-number">3.3.</span> <span class="nav-text">安装插件和依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-ctags"><span class="nav-number">3.4.</span> <span class="nav-text">安装 ctags</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">3.5.</span> <span class="nav-text">插件快捷键</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="liangjunmo"
+      src="https://i.loli.net/2021/09/01/WTUbpda21jx5uOw.jpg">
+  <p class="site-author-name" itemprop="name">liangjunmo</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/liangjunmo" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;liangjunmo" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">liangjunmo</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
 
 </body>
-
 </html>

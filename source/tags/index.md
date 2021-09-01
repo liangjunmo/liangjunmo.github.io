@@ -1,4 +1,4 @@
 ---
 title: Tags
-date:
+type: "tags"
 ---

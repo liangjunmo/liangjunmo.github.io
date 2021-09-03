@@ -26,7 +26,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2021/09/01/N5eVtjq1J79TOAW.jpg">
 <meta property="article:published_time" content="2021-08-31T16:00:00.000Z">
-<meta property="article:modified_time" content="2021-09-02T02:31:07.087Z">
+<meta property="article:modified_time" content="2021-09-03T09:35:26.185Z">
 <meta property="article:author" content="liangjunmo">
 <meta property="article:tag" content="vim">
 <meta name="twitter:card" content="summary">
@@ -119,17 +119,17 @@
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">1</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">3</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">0</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">1</span></a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">1</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">2</span></a>
 
   </li>
         <li class="menu-item menu-item-about">
@@ -195,7 +195,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2021-09-02 10:31:07" itemprop="dateModified" datetime="2021-09-02T10:31:07+08:00">2021-09-02</time>
+                <time title="Modified: 2021-09-03 17:35:26" itemprop="dateModified" datetime="2021-09-03T17:35:26+08:00">2021-09-03</time>
               </span>
 
           
@@ -254,7 +254,10 @@
 <h3 id="搜索"><a href="#搜索" class="headerlink" title="搜索"></a>搜索</h3><ul>
 <li>q/ 历史搜索</li>
 <li>* 向下跳转到与所在单词匹配的下一个单词</li>
-<li># 向上跳转到与所在单词匹配的下一个单词</li>
+<li># 向上跳转到与所在单词匹配的上一个单词</li>
+</ul>
+<h3 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h3><ul>
+<li>:so $MYVIMRC 不重启 Vim 的情况下，重新加载 ~/.vimrc</li>
 </ul>
 <h2 id="插件及配置"><a href="#插件及配置" class="headerlink" title="插件及配置"></a>插件及配置</h2><h3 id="截图"><a href="#截图" class="headerlink" title="截图"></a>截图</h3><p><img src="https://i.loli.net/2021/09/01/N5eVtjq1J79TOAW.jpg" alt="vim.jpg"></p>
 <h3 id="安装-vim-plug-管理插件"><a href="#安装-vim-plug-管理插件" class="headerlink" title="安装 vim-plug 管理插件"></a>安装 vim-plug 管理插件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fLo ~/.vim/<span class="built_in">autoload</span>/plug.vim --create-dirs [&lt;https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim&gt;](&lt;https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim&gt;)</span><br></pre></td></tr></table></figure>
@@ -310,6 +313,13 @@
 
 
         
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2021/09/03/golang-unit-testing-01/" rel="next" title="Golang 单元测试">
+      Golang 单元测试 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
     
   </article>
@@ -367,7 +377,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">1.</span> <span class="nav-text">基本快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6-%E7%B2%98%E8%B4%B4-%E5%89%AA%E5%88%87-%E5%88%A0%E9%99%A4"><span class="nav-number">1.1.</span> <span class="nav-text">复制&#x2F;粘贴&#x2F;剪切&#x2F;删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%B3%E8%BD%AC%E7%A7%BB%E5%8A%A8"><span class="nav-number">1.2.</span> <span class="nav-text">跳转移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8C%E5%86%85%E6%90%9C%E7%B4%A2%E7%A7%BB%E5%8A%A8"><span class="nav-number">1.3.</span> <span class="nav-text">行内搜索移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BF%BB%E9%A1%B5"><span class="nav-number">1.4.</span> <span class="nav-text">翻页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2"><span class="nav-number">1.5.</span> <span class="nav-text">正则替换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2"><span class="nav-number">1.6.</span> <span class="nav-text">搜索</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E5%8F%8A%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">插件及配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%AA%E5%9B%BE"><span class="nav-number">2.1.</span> <span class="nav-text">截图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-vim-plug-%E7%AE%A1%E7%90%86%E6%8F%92%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">安装 vim-plug 管理插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-vimrc"><span class="nav-number">2.3.</span> <span class="nav-text">修改配置文件 ~&#x2F;.vimrc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6%E5%92%8C%E4%BE%9D%E8%B5%96"><span class="nav-number">2.4.</span> <span class="nav-text">安装插件和依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-ctags"><span class="nav-number">2.5.</span> <span class="nav-text">安装 ctags</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">2.6.</span> <span class="nav-text">插件快捷键</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">1.</span> <span class="nav-text">基本快捷键</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E5%88%B6-%E7%B2%98%E8%B4%B4-%E5%89%AA%E5%88%87-%E5%88%A0%E9%99%A4"><span class="nav-number">1.1.</span> <span class="nav-text">复制&#x2F;粘贴&#x2F;剪切&#x2F;删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%B3%E8%BD%AC%E7%A7%BB%E5%8A%A8"><span class="nav-number">1.2.</span> <span class="nav-text">跳转移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%8C%E5%86%85%E6%90%9C%E7%B4%A2%E7%A7%BB%E5%8A%A8"><span class="nav-number">1.3.</span> <span class="nav-text">行内搜索移动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BF%BB%E9%A1%B5"><span class="nav-number">1.4.</span> <span class="nav-text">翻页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E6%9B%BF%E6%8D%A2"><span class="nav-number">1.5.</span> <span class="nav-text">正则替换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%90%9C%E7%B4%A2"><span class="nav-number">1.6.</span> <span class="nav-text">搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E5%AE%83"><span class="nav-number">1.7.</span> <span class="nav-text">其它</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E5%8F%8A%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">插件及配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%88%AA%E5%9B%BE"><span class="nav-number">2.1.</span> <span class="nav-text">截图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-vim-plug-%E7%AE%A1%E7%90%86%E6%8F%92%E4%BB%B6"><span class="nav-number">2.2.</span> <span class="nav-text">安装 vim-plug 管理插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6-vimrc"><span class="nav-number">2.3.</span> <span class="nav-text">修改配置文件 ~&#x2F;.vimrc</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6%E5%92%8C%E4%BE%9D%E8%B5%96"><span class="nav-number">2.4.</span> <span class="nav-text">安装插件和依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85-ctags"><span class="nav-number">2.5.</span> <span class="nav-text">安装 ctags</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">2.6.</span> <span class="nav-text">插件快捷键</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -383,14 +393,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">posts</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>

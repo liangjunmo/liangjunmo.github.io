@@ -1,7 +1,7 @@
 baseURL = "https://liangjunmo.com/"
 languageCode = "en"
 defaultContentLanguage = "en"                             # en / zh-cn / ... (This field determines which i18n file to use)
-title = "liangjunmo's blog"
+title = "liangjunmo"
 preserveTaxonomyNames = true
 enableRobotsTXT = true
 enableEmoji = true
@@ -21,7 +21,7 @@ googleAnalytics = ""      # UA-XXXXXXXX-X
 copyright = ""            # default: author.name ↓        # 默认为下面配置的author.name ↓
 
 [author]                  # essential                     # 必需
-  name = "liangjunmo"
+  name = 'liangjunmo'
 
 [sitemap]                 # essential                     # 必需
   changefreq = "weekly"
@@ -59,7 +59,7 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
   gitRepo = ""
 
   # site info (optional)                                  # 站点信息（可选，不需要的可以直接注释掉）
-  logoTitle = "liangjunmo's blog"        # default: the title value    # 默认值: 上面设置的title值
+  logoTitle = ""        # default: the title value    # 默认值: 上面设置的title值
   keywords = ["liangjunmo"]
   description = "liangjunmo's blog."
 
@@ -92,7 +92,7 @@ copyright = ""            # default: author.name ↓        # 默认为下面配
 
   postMetaInFooter = true   # contain author, lastMod, markdown link, license           # 包含作者，上次修改时间，markdown链接，许可信息
   linkToMarkDown = false    # Only effective when hugo will output .md files.           # 链接到markdown原始文件（仅当允许hugo生成markdown文件时有效）
-  contentCopyright = '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'     # e.g. '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'
+  contentCopyright = '禁止任何形式的转载' # e.g. '<a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a>'
 
   changyanAppid = ""        # Changyan app id             # 畅言
   changyanAppkey = ""       # Changyan app key

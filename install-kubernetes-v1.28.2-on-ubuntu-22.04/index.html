@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Install Kubernetes V1.28.2 on Ubuntu 22.04 - liangjunmo</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="liangjunmo" /><meta name="description" content="Kubernetes v1.28.2 安装教程" /><meta name="keywords" content="liangjunmo" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.102.3 with theme even" />
+
+
+<link rel="canonical" href="https://liangjunmo.com/install-kubernetes-v1.28.2-on-ubuntu-22.04/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+<link href="/sass/main.min.1f443748438650f2b5b7847b3947fe8b4b7c5e934a99eecc29d4d6dd10b68e89.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Install Kubernetes V1.28.2 on Ubuntu 22.04" />
+<meta property="og:description" content="Kubernetes v1.28.2 安装教程" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://liangjunmo.com/install-kubernetes-v1.28.2-on-ubuntu-22.04/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-10-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-10-08T00:00:00+00:00" />
+
+<meta itemprop="name" content="Install Kubernetes V1.28.2 on Ubuntu 22.04">
+<meta itemprop="description" content="Kubernetes v1.28.2 安装教程"><meta itemprop="datePublished" content="2023-10-08T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-10-08T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1462">
+<meta itemprop="keywords" content="kubernetes," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Install Kubernetes V1.28.2 on Ubuntu 22.04"/>
+<meta name="twitter:description" content="Kubernetes v1.28.2 安装教程"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">liangjunmo</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/posts/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+
+  
+
+
+</nav>
+
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">liangjunmo</a>
+</div>
+
+
+
+
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/posts/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Install Kubernetes V1.28.2 on Ubuntu 22.04</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2023-10-08 </span>
+        
+          <span class="more-meta"> 1462 words </span>
+          <span class="more-meta"> 3 mins read </span>
+        
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#kubernetes-v1282-安装教程">Kubernetes v1.28.2 安装教程</a></li>
+    <li><a href="#环境">环境</a></li>
+    <li><a href="#安装-docker">安装 Docker</a>
+      <ul>
+        <li><a href="#卸载">卸载</a></li>
+        <li><a href="#apt-安装">apt 安装</a></li>
+        <li><a href="#deb-手动安装">deb 手动安装</a></li>
+        <li><a href="#修改-cgroup-driver-为-systemd">修改 Cgroup Driver 为 systemd</a></li>
+      </ul>
+    </li>
+    <li><a href="#安装-kubernetes">安装 Kubernetes</a>
+      <ul>
+        <li><a href="#安装-kubectl">安装 kubectl</a></li>
+        <li><a href="#安装-kubeadmkubelet">安装 kubeadm、kubelet</a>
+          <ul>
+            <li><a href="#安装-cni-插件">安装 CNI 插件</a></li>
+            <li><a href="#安装-crictl">安装 crictl</a></li>
+            <li><a href="#安装-kubeadm">安装 kubeadm</a></li>
+            <li><a href="#安装-kubelet">安装 kubelet</a></li>
+          </ul>
+        </li>
+        <li><a href="#配置-cgroup-driver">配置 Cgroup Driver</a></li>
+        <li><a href="#安装-cri-dockerd">安装 cri-dockerd</a></li>
+        <li><a href="#准备镜像">准备镜像</a></li>
+        <li><a href="#禁用-swap">禁用 swap</a></li>
+        <li><a href="#使用-kubeadm-初始化-master-节点">使用 kubeadm 初始化 master 节点</a></li>
+        <li><a href="#配置-flannel-网络">配置 flannel 网络</a></li>
+        <li><a href="#检查系统-pod-是否正常">检查系统 pod 是否正常</a></li>
+        <li><a href="#部署-nginx-进行测试">部署 Nginx 进行测试</a></li>
+      </ul>
+    </li>
+    <li><a href="#加入集群">加入集群</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+    <div class="post-content">
+      <h1 id="kubernetes-v1282-安装教程">Kubernetes v1.28.2 安装教程</h1>
+<h1 id="环境">环境</h1>
+<ul>
+<li>Ubuntu 22.04</li>
+<li>Docker 23.0.1</li>
+<li>Kubernetes v1.28.2</li>
+</ul>
+<h1 id="安装-docker">安装 Docker</h1>
+<p><a href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a></p>
+<h2 id="卸载">卸载</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="apt-安装">apt 安装</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo apt-get update
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo apt-get install ca-certificates curl gnupg
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo install -m 0755 -d /etc/apt/keyrings
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo chmod a+r /etc/apt/keyrings/docker.gpg
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">echo \
+</span></span><span class="line"><span class="cl">  &#34;deb [arch=&#34;$(dpkg --print-architecture)&#34; signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+</span></span><span class="line"><span class="cl">  &#34;$(. /etc/os-release &amp;&amp; echo &#34;$VERSION_CODENAME&#34;)&#34; stable&#34; | \
+</span></span><span class="line"><span class="cl">  sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo apt-get update
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo systemctl status docker
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo docker info
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="deb-手动安装">deb 手动安装</h2>
+<p><a href="https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64/">https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64/</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">curl -L --remote-name-all https://download.docker.com/linux/ubuntu/dists/jammy/pool/stable/amd64/{containerd.io_1.6.24-1_amd64.deb,docker-ce_24.0.6-1~ubuntu.22.04~jammy_amd64.deb,docker-ce-cli_24.0.6-1~ubuntu.22.04~jammy_amd64.deb,docker-buildx-plugin_0.11.2-1~ubuntu.22.04~jammy_amd64.deb,docker-compose-plugin_2.21.0-1~ubuntu.22.04~jammy_amd64.deb}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo dpkg -i ./containerd.io_1.6.24-1_amd64.deb \
+</span></span><span class="line"><span class="cl">  ./docker-ce_24.0.6-1~ubuntu.22.04~jammy_amd64.deb \
+</span></span><span class="line"><span class="cl">  ./docker-ce-cli_24.0.6-1~ubuntu.22.04~jammy_amd64.deb \
+</span></span><span class="line"><span class="cl">  ./docker-buildx-plugin_0.11.2-1~ubuntu.22.04~jammy_amd64.deb \
+</span></span><span class="line"><span class="cl">  ./docker-compose-plugin_2.21.0-1~ubuntu.22.04~jammy_amd64.deb
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo systemctl status docker
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo docker info
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="修改-cgroup-driver-为-systemd">修改 Cgroup Driver 为 systemd</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo docker info
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>如果输出包含下面的内容，则不需要修改：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Cgroup Driver: systemd
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>否则编辑 <code>/etc/docker/daemon.json</code> 文件：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">{
+</span></span><span class="line"><span class="cl">  &#34;exec-opts&#34;: [&#34;native.cgroupdriver=systemd&#34;]
+</span></span><span class="line"><span class="cl">}
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>重启 docker:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo systemctl restart docker
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="安装-kubernetes">安装 Kubernetes</h1>
+<h2 id="安装-kubectl">安装 kubectl</h2>
+<p><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux">https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">curl -L --remote-name-all https://dl.k8s.io/release/v1.28.2/bin/linux/amd64/{kubectl,kubectl.sha256}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">echo &#34;$(cat kubectl.sha256)  kubectl&#34; | sha256sum --check
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">kubectl version --client --output=yaml
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="安装-kubeadmkubelet">安装 kubeadm、kubelet</h2>
+<p><a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl">https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl</a></p>
+<h3 id="安装-cni-插件">安装 CNI 插件</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo mkdir -p /opt/cni/bin
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">curl -LO https://github.com/containernetworking/plugins/releases/download/v1.3.0/cni-plugins-linux-amd64-v1.3.0.tgz
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo tar -xzf cni-plugins-linux-amd64-v1.3.0.tgz -C /opt/cni/bin
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="安装-crictl">安装 crictl</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">curl -LO https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.28.0/crictl-v1.28.0-linux-amd64.tar.gz
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo tar -xzf crictl-v1.28.0-linux-amd64.tar.gz -C /usr/local/bin
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="安装-kubeadm">安装 kubeadm</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">curl -L --remote-name-all https://dl.k8s.io/release/v1.28.2/bin/linux/amd64/{kubeadm,kubeadm.sha256}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">echo &#34;$(cat kubeadm.sha256) kubeadm&#34; | sha256sum --check
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo install -o root -g root -m 0755 kubeadm /usr/local/bin/kubeadm
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">kubeadm version
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="安装-kubelet">安装 kubelet</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">curl -L --remote-name-all https://dl.k8s.io/release/v1.28.2/bin/linux/amd64/{kubelet,kubelet.sha256}
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">echo &#34;$(cat kubelet.sha256) kubelet&#34; | sha256sum --check
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo install -o root -g root -m 0755 kubelet /usr/local/bin/kubelet
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">kubelet --version
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">curl -LO https://raw.githubusercontent.com/kubernetes/release/v0.15.1/cmd/kubepkg/templates/latest/deb/kubelet/lib/systemd/system/kubelet.service
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sed -i &#34;s:/usr/bin:/usr/local/bin:g&#34; kubelet.service
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo cp kubelet.service /etc/systemd/system/kubelet.service
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">curl -LO https://raw.githubusercontent.com/kubernetes/release/v0.15.1/cmd/kubepkg/templates/latest/deb/kubeadm/10-kubeadm.conf
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sed -i &#34;s:/usr/bin:/usr/local/bin:g&#34; 10-kubeadm.conf
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo mkdir -p /etc/systemd/system/kubelet.service.d
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo cp 10-kubeadm.conf /etc/systemd/system/kubelet.service.d/10-kubeadm.conf
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo systemctl enable --now kubelet
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"># 现在 kubelet 还是启动失败，需要等使用 kubeadm 初始化后再重启
+</span></span><span class="line"><span class="cl">sudo systemctl status kubelet
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="配置-cgroup-driver">配置 Cgroup Driver</h2>
+<blockquote>
+<p>在版本 1.22 及更高版本中，如果用户没有在 KubeletConfiguration 中设置 cgroupDriver 字段， kubeadm 会将它设置为默认值 systemd。</p>
+</blockquote>
+<p>默认为 systemd，不用修改。</p>
+<h2 id="安装-cri-dockerd">安装 cri-dockerd</h2>
+<p><a href="https://github.com/Mirantis/cri-dockerd">https://github.com/Mirantis/cri-dockerd</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">curl -LO https://github.com/Mirantis/cri-dockerd/releases/download/v0.3.4/cri-dockerd_0.3.4.3-0.ubuntu-jammy_amd64.deb
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo dpkg -i cri-dockerd_0.3.4.3-0.ubuntu-jammy_amd64.deb
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo systemctl status cri-dockerd
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="准备镜像">准备镜像</h2>
+<p>查看需要的镜像：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kubeadm config images list
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>镜像列表：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">registry.k8s.io/kube-apiserver:v1.28.2
+</span></span><span class="line"><span class="cl">registry.k8s.io/kube-controller-manager:v1.28.2
+</span></span><span class="line"><span class="cl">registry.k8s.io/kube-scheduler:v1.28.2
+</span></span><span class="line"><span class="cl">registry.k8s.io/kube-proxy:v1.28.2
+</span></span><span class="line"><span class="cl">registry.k8s.io/pause:3.9
+</span></span><span class="line"><span class="cl">registry.k8s.io/etcd:3.5.9-0
+</span></span><span class="line"><span class="cl">registry.k8s.io/coredns/coredns:v1.10.1
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>pull 镜像：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">for image in $(kubeadm config images list); do sudo docker pull $image; done
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>网络问题无法直接 pull 时，找一个挂了代理的机器 pull 镜像，然后导出镜像：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">echo &#34;sudo docker pull registry.k8s.io/kube-apiserver:v1.28.2
+</span></span><span class="line"><span class="cl">sudo docker pull registry.k8s.io/kube-controller-manager:v1.28.2
+</span></span><span class="line"><span class="cl">sudo docker pull registry.k8s.io/kube-scheduler:v1.28.2
+</span></span><span class="line"><span class="cl">sudo docker pull registry.k8s.io/kube-proxy:v1.28.2
+</span></span><span class="line"><span class="cl">sudo docker pull registry.k8s.io/pause:3.9
+</span></span><span class="line"><span class="cl">sudo docker pull registry.k8s.io/etcd:3.5.9-0
+</span></span><span class="line"><span class="cl">sudo docker pull registry.k8s.io/coredns/coredns:v1.10.1
+</span></span><span class="line"><span class="cl">sudo docker save registry.k8s.io/kube-apiserver:v1.28.2 registry.k8s.io/kube-controller-manager:v1.28.2 registry.k8s.io/kube-scheduler:v1.28.2 registry.k8s.io/kube-proxy:v1.28.2 registry.k8s.io/pause:3.9 registry.k8s.io/etcd:3.5.9-0 registry.k8s.io/coredns/coredns:v1.10.1 -o k8s_v1.28.2_image.tar&#34; &gt; k8s_v1.28.2_image.sh
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo chmod u+x k8s_v1.28.2_image.sh
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">./k8s_v1.28.2_image.sh
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>把上面导出的文件 ssh 到要安装 kubernetes 的机器上，再执行：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo docker load -i k8s_v1.28.2_image.tar
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="禁用-swap">禁用 swap</h2>
+<p>删除 swap 相关的内容，永久生效：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo sed -i &#34;/swap/d&#34; /etc/fstab
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>临时生效，重启失效：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo swapoff -a
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="使用-kubeadm-初始化-master-节点">使用 kubeadm 初始化 master 节点</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo kubeadm init --cri-socket unix:///var/run/cri-dockerd.sock --kubernetes-version=v1.28.2 --pod-network-cidr 10.244.0.0/16 --service-cidr=10.96.0.0/12
+</span></span></code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p>如果执行失败或者其它原因想要重置，可以执行 <code>kubeadm reset --cri-socket /var/run/cri-dockerd.sock</code>.</p>
+</blockquote>
+<p>输出：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Your Kubernetes control-plane has initialized successfully!
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">To start using your cluster, you need to run the following as a regular user:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  mkdir -p $HOME/.kube
+</span></span><span class="line"><span class="cl">  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+</span></span><span class="line"><span class="cl">  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Alternatively, if you are the root user, you can run:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  export KUBECONFIG=/etc/kubernetes/admin.conf
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">You should now deploy a pod network to the cluster.
+</span></span><span class="line"><span class="cl">Run &#34;kubectl apply -f [podnetwork].yaml&#34; with one of the options listed at:
+</span></span><span class="line"><span class="cl">  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Then you can join any number of worker nodes by running the following on each as root:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">kubeadm join 192.168.1.6:6443 --token 96rc5z.6yew6ic8agjemadl \
+</span></span><span class="line"><span class="cl">	--discovery-token-ca-cert-hash sha256:8b2bdd1f399c3de176bb16be3858fc262f6cefcc2565ec9688fc696404ed2864
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="配置-flannel-网络">配置 flannel 网络</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kubectl apply -f https://github.com/flannel-io/flannel/releases/download/v0.22.3/kube-flannel.yml
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="检查系统-pod-是否正常">检查系统 pod 是否正常</h2>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kubectl get pods -n kube-system
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>pod 信息正常：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">NAME                                        READY   STATUS    RESTARTS   AGE
+</span></span><span class="line"><span class="cl">coredns-5dd5756b68-6t2fs                    1/1     Running   0          15m
+</span></span><span class="line"><span class="cl">coredns-5dd5756b68-vg5nx                    1/1     Running   0          15m
+</span></span><span class="line"><span class="cl">etcd-liangjunmo-ubuntu                      1/1     Running   0          15m
+</span></span><span class="line"><span class="cl">kube-apiserver-liangjunmo-ubuntu            1/1     Running   0          15m
+</span></span><span class="line"><span class="cl">kube-controller-manager-liangjunmo-ubuntu   1/1     Running   0          15m
+</span></span><span class="line"><span class="cl">kube-proxy-nhjz7                            1/1     Running   0          15m
+</span></span><span class="line"><span class="cl">kube-scheduler-liangjunmo-ubuntu            1/1     Running   0          15m
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h2 id="部署-nginx-进行测试">部署 Nginx 进行测试</h2>
+<p>准备 nginx-deployment.yaml:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">apiVersion: apps/v1
+</span></span><span class="line"><span class="cl">kind: Deployment
+</span></span><span class="line"><span class="cl">metadata:
+</span></span><span class="line"><span class="cl">  name: nginx-deployment
+</span></span><span class="line"><span class="cl">spec:
+</span></span><span class="line"><span class="cl">  selector:
+</span></span><span class="line"><span class="cl">    matchLabels:
+</span></span><span class="line"><span class="cl">      app: nginx
+</span></span><span class="line"><span class="cl">  replicas: 1
+</span></span><span class="line"><span class="cl">  template:
+</span></span><span class="line"><span class="cl">    metadata:
+</span></span><span class="line"><span class="cl">      labels:
+</span></span><span class="line"><span class="cl">        app: nginx
+</span></span><span class="line"><span class="cl">    spec:
+</span></span><span class="line"><span class="cl">      containers:
+</span></span><span class="line"><span class="cl">      - name: nginx
+</span></span><span class="line"><span class="cl">        image: nginx:latest
+</span></span><span class="line"><span class="cl">        imagePullPolicy: IfNotPresent
+</span></span><span class="line"><span class="cl">        ports:
+</span></span><span class="line"><span class="cl">        - containerPort: 80
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>应用：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kubectl apply -f nginx-deployment.yaml
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看 pod:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kubectl get pods
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>pod 状态：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">NAME                                READY   STATUS    RESTARTS   AGE
+</span></span><span class="line"><span class="cl">nginx-deployment-54b6f7ddf9-2v6jt   0/1     Pending   0          29s
+</span></span><span class="line"><span class="cl">nginx-deployment-54b6f7ddf9-mqdzv   0/1     Pending   0          29s
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>pod 一直在 pending，查看详情：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kubectl describe pod nginx-deployment-54b6f7ddf9-2v6jt
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>最后的内容为：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Events:
+</span></span><span class="line"><span class="cl">  Type     Reason            Age   From               Message
+</span></span><span class="line"><span class="cl">  ----     ------            ----  ----               -------
+</span></span><span class="line"><span class="cl">  Warning  FailedScheduling  40s   default-scheduler  0/1 nodes are available: 1 node(s) had untolerated taint {node-role.kubernetes.io/control-plane: }. preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling..
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>有 untolerated taint 无法容忍的污点 <code>node-role.kubernetes.io/control-plane</code>，需要去除污点。</p>
+<blockquote>
+<p>当前节点为 master 节点，实际生产环境不应该让 pod 调度到 master 节点，这里为了测试先去除 master 节点上的 <code>node-role.kubernetes.io/control-plane</code> 污点.</p>
+</blockquote>
+<p>先查看节点：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kubectl get nodes
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>节点信息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">NAME                STATUS   ROLES           AGE   VERSION
+</span></span><span class="line"><span class="cl">liangjunmo-ubuntu   Ready    control-plane   13m   v1.28.2
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>查看污点：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kubectl describe nodes liangjunmo-ubuntu | grep Taint
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>污点信息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Taints:             node-role.kubernetes.io/control-plane:NoSchedule
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>去除污点：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kubectl taint nodes liangjunmo-ubuntu node-role.kubernetes.io/control-plane-
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>再次查看污点：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kubectl describe nodes liangjunmo-ubuntu | grep Taint
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>污点信息：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">Taints:             &lt;none&gt;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>再次查看 pod:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kubectl get pods
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>pod 状态正常：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">NAME                                READY   STATUS    RESTARTS   AGE
+</span></span><span class="line"><span class="cl">nginx-deployment-54b6f7ddf9-2v6jt   1/1     Running   0          5m13s
+</span></span><span class="line"><span class="cl">nginx-deployment-54b6f7ddf9-mqdzv   1/1     Running   0          5m13s
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h1 id="加入集群">加入集群</h1>
+<p>在每个 worker node 上都需要执行一遍上面的流程，只不过其中的<strong>使用 kubeadm 初始化 master 节点</strong>，改为执行 <code>kubeadm join</code> 操作。</p>
+<blockquote>
+<p>例如上面使用 kubeadm init 初始化 master 节点后输出的：</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kubeadm join 192.168.1.6:6443 --token 96rc5z.6yew6ic8agjemadl \
+</span></span><span class="line"><span class="cl">--discovery-token-ca-cert-hash sha256:8b2bdd1f399c3de176bb16be3858fc262f6cefcc2565ec9688fc696404ed2864
+</span></span></code></pre></td></tr></table>
+</div>
+</div></blockquote>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">liangjunmo</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">Created</span>
+    <span class="item-content">
+        2023-10-08
+    </span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2023-10-08
+        
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content">禁止任何形式的转载</span>
+  </p>
+  
+</div>
+<footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/kubernetes/">kubernetes</a>
+          </div>
+      <nav class="post-nav">
+        
+        
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+
+  
+
+  
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://github.com/liangjunmo" class="iconfont icon-github" title="github"></a>
+  <a href="https://liangjunmo.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  
+
+  <span class="copyright-year">
+    &copy; 
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>liangjunmo ☕</span>
+  </span>
+</div>
+
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

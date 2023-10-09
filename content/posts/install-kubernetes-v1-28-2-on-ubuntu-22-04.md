@@ -318,7 +318,7 @@ kube-proxy-nhjz7                            1/1     Running   0          15m
 kube-scheduler-liangjunmo-ubuntu            1/1     Running   0          15m
 ```
 
-## 部署 Nginx 进行测试
+## 部署 nginx 进行测试
 
 准备 nginx-deployment.yaml:
 

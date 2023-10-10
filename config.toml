@@ -233,4 +233,4 @@ copyright = "liangjunmo ☕"            # default: author.name ↓        # 默�
 ######
 
 [permalinks]
-  posts = '/:slug/'
+  posts = '/:year/:month/:slug/'

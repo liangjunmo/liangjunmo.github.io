@@ -1,6 +1,6 @@
 ---
 title: "Install Kubernetes V1.28.2 on Ubuntu 22.04"
-slug: install-kubernetes-v1.28.2-on-ubuntu-22.04
+slug: install-kubernetes-v1-28-2-on-ubuntu-22-04
 type: post
 date: 2023-10-08
 lastMod: 2023-10-08

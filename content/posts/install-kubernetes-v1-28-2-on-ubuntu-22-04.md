@@ -1,18 +1,19 @@
 ---
-title: "Install Kubernetes V1.28.2 on Ubuntu 22.04"
+title: "Install Kubernetes v1.28.2 on Ubuntu 22.04"
 slug: install-kubernetes-v1-28-2-on-ubuntu-22-04
 type: post
 date: 2023-10-08
 lastMod: 2023-10-08
 showSummary: true
-summary: Kubernetes v1.28.2 安装教程
+summary: Kubernetes v1.28.2 安装记录
 tags:
 - kubernetes
 ---
 
-# Kubernetes v1.28.2 安装教程
+# Kubernetes v1.28.2 安装记录
 
 # 环境
+
 * Ubuntu 22.04
 * Docker 23.0.1
 * Kubernetes v1.28.2
@@ -240,7 +241,7 @@ sudo chmod u+x k8s_v1.28.2_image.sh
 ./k8s_v1.28.2_image.sh
 ```
 
-把上面导出的文件 ssh 到要安装 kubernetes 的机器上，再执行：
+把上面导出的文件 ssh 到要安装 Kubernetes 的机器上，再执行：
 
 ```
 sudo docker load -i k8s_v1.28.2_image.tar
@@ -305,7 +306,7 @@ kubectl apply -f https://github.com/flannel-io/flannel/releases/download/v0.22.3
 kubectl get pods -n kube-system
 ```
 
-pod 信息正常：
+pod 正常：
 
 ```
 NAME                                        READY   STATUS    RESTARTS   AGE
@@ -357,7 +358,7 @@ kubectl apply -f nginx-deployment.yaml
 kubectl get pods
 ```
 
-pod 状态：
+pod 信息：
 
 ```
 NAME                                READY   STATUS    RESTARTS   AGE
@@ -365,7 +366,7 @@ nginx-deployment-54b6f7ddf9-2v6jt   0/1     Pending   0          29s
 nginx-deployment-54b6f7ddf9-mqdzv   0/1     Pending   0          29s
 ```
 
-pod 一直在 pending，查看详情：
+pod 状态一直是 pending，查看详情：
 
 ```
 kubectl describe pod nginx-deployment-54b6f7ddf9-2v6jt

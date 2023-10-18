@@ -44,12 +44,12 @@
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://liangjunmo.com/2023/10/install-kubernetes-v1-28-2-on-ubuntu-22-04/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-10-08T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-10-08T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-10-18T00:00:00+00:00" />
 
 <meta itemprop="name" content="Install Kubernetes v1.28.2 on Ubuntu 22.04">
 <meta itemprop="description" content="Kubernetes v1.28.2 安装记录"><meta itemprop="datePublished" content="2023-10-08T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2023-10-08T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1462">
+<meta itemprop="dateModified" content="2023-10-18T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1479">
 <meta itemprop="keywords" content="kubernetes," /><meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Install Kubernetes v1.28.2 on Ubuntu 22.04"/>
 <meta name="twitter:description" content="Kubernetes v1.28.2 安装记录"/>
@@ -130,7 +130,7 @@
       <div class="post-meta">
         <span class="post-time"> 2023-10-08 </span>
         
-          <span class="more-meta"> 1462 words </span>
+          <span class="more-meta"> 1479 words </span>
           <span class="more-meta"> 3 mins read </span>
         
       </div>
@@ -143,26 +143,26 @@
   <ul>
     <li><a href="#kubernetes-v1282-安装记录">Kubernetes v1.28.2 安装记录</a></li>
     <li><a href="#环境">环境</a></li>
-    <li><a href="#安装-docker">安装 Docker</a>
+    <li><a href="#安装-docker">安装 docker</a>
       <ul>
         <li><a href="#卸载">卸载</a></li>
         <li><a href="#apt-安装">apt 安装</a></li>
         <li><a href="#deb-手动安装">deb 手动安装</a></li>
-        <li><a href="#修改-cgroup-driver-为-systemd">修改 Cgroup Driver 为 systemd</a></li>
+        <li><a href="#修改-cgroup-driver-为-systemd">修改 cgroup driver 为 systemd</a></li>
       </ul>
     </li>
-    <li><a href="#安装-kubernetes">安装 Kubernetes</a>
+    <li><a href="#安装-kubernetes">安装 kubernetes</a>
       <ul>
         <li><a href="#安装-kubectl">安装 kubectl</a></li>
         <li><a href="#安装-kubeadmkubelet">安装 kubeadm、kubelet</a>
           <ul>
-            <li><a href="#安装-cni-插件">安装 CNI 插件</a></li>
+            <li><a href="#安装-cni-插件">安装 cni 插件</a></li>
             <li><a href="#安装-crictl">安装 crictl</a></li>
             <li><a href="#安装-kubeadm">安装 kubeadm</a></li>
             <li><a href="#安装-kubelet">安装 kubelet</a></li>
           </ul>
         </li>
-        <li><a href="#配置-cgroup-driver">配置 Cgroup Driver</a></li>
+        <li><a href="#配置-cgroup-driver">配置 cgroup driver</a></li>
         <li><a href="#安装-cri-dockerd">安装 cri-dockerd</a></li>
         <li><a href="#准备镜像">准备镜像</a></li>
         <li><a href="#禁用-swap">禁用 swap</a></li>
@@ -181,11 +181,11 @@
       <h1 id="kubernetes-v1282-安装记录">Kubernetes v1.28.2 安装记录</h1>
 <h1 id="环境">环境</h1>
 <ul>
-<li>Ubuntu 22.04</li>
-<li>Docker 23.0.1</li>
-<li>Kubernetes v1.28.2</li>
+<li>ubuntu 22.04</li>
+<li>docker 23.0.1</li>
+<li>kubernetes v1.28.2</li>
 </ul>
-<h1 id="安装-docker">安装 Docker</h1>
+<h1 id="安装-docker">安装 docker</h1>
 <p><a href="https://docs.docker.com/engine/install/ubuntu/">https://docs.docker.com/engine/install/ubuntu/</a></p>
 <h2 id="卸载">卸载</h2>
 <div class="highlight"><div class="chroma">
@@ -277,7 +277,7 @@
 </span></span><span class="line"><span class="cl">sudo docker info
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="修改-cgroup-driver-为-systemd">修改 Cgroup Driver 为 systemd</h2>
+</div><h2 id="修改-cgroup-driver-为-systemd">修改 cgroup driver 为 systemd</h2>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -317,7 +317,7 @@
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo systemctl restart docker
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h1 id="安装-kubernetes">安装 Kubernetes</h1>
+</div><h1 id="安装-kubernetes">安装 kubernetes</h1>
 <h2 id="安装-kubectl">安装 kubectl</h2>
 <p><a href="https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux">https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux</a></p>
 <div class="highlight"><div class="chroma">
@@ -342,7 +342,7 @@
 </div>
 </div><h2 id="安装-kubeadmkubelet">安装 kubeadm、kubelet</h2>
 <p><a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl">https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl</a></p>
-<h3 id="安装-cni-插件">安装 CNI 插件</h3>
+<h3 id="安装-cni-插件">安装 cni 插件</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -452,7 +452,8 @@
 </span></span><span class="line"><span class="cl">sudo systemctl status kubelet
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="配置-cgroup-driver">配置 Cgroup Driver</h2>
+</div><h2 id="配置-cgroup-driver">配置 cgroup driver</h2>
+<p><a href="https://kubernetes.io/zh-cn/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/">https://kubernetes.io/zh-cn/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/</a></p>
 <blockquote>
 <p>在版本 1.22 及更高版本中，如果用户没有在 KubeletConfiguration 中设置 cgroupDriver 字段， kubeadm 会将它设置为默认值 systemd。</p>
 </blockquote>
@@ -546,7 +547,7 @@
 </span></span><span class="line"><span class="cl">./k8s_v1.28.2_image.sh
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>把上面导出的文件 ssh 到要安装 Kubernetes 的机器上，再执行：</p>
+</div><p>将上面导出的文件 ssh 到对应的机器上，再执行下面的命令导入镜像：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -643,6 +644,7 @@
 </span></span></code></pre></td></tr></table>
 </div>
 </div><h2 id="检查系统-pod-是否正常">检查系统 pod 是否正常</h2>
+<p>查看 pod：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -651,7 +653,7 @@
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kubectl get pods -n kube-system
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>pod 正常：</p>
+</div><p>pod 信息：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -674,7 +676,8 @@
 </span></span><span class="line"><span class="cl">kube-scheduler-liangjunmo-ubuntu            1/1     Running   0          15m
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h2 id="部署-nginx-进行测试">部署 nginx 进行测试</h2>
+</div><p>pod 正常。</p>
+<h2 id="部署-nginx-进行测试">部署 nginx 进行测试</h2>
 <p>准备 nginx-deployment.yaml:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -753,7 +756,7 @@
 </span></span><span class="line"><span class="cl">nginx-deployment-54b6f7ddf9-mqdzv   0/1     Pending   0          29s
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>pod 状态一直是 pending，查看详情：</p>
+</div><p>pod pending，查看详细信息：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -855,7 +858,7 @@
 <pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">kubectl get pods
 </span></span></code></pre></td></tr></table>
 </div>
-</div><p>pod 状态正常：</p>
+</div><p>pod 信息：</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">1
@@ -868,7 +871,8 @@
 </span></span><span class="line"><span class="cl">nginx-deployment-54b6f7ddf9-mqdzv   1/1     Running   0          5m13s
 </span></span></code></pre></td></tr></table>
 </div>
-</div><h1 id="加入集群">加入集群</h1>
+</div><p>pod 正常。</p>
+<h1 id="加入集群">加入集群</h1>
 <p>在每个 worker node 上都需要执行一遍上面的流程，只不过其中的<strong>使用 kubeadm 初始化 master 节点</strong>，改为执行 <code>kubeadm join</code> 操作。</p>
 <blockquote>
 <p>例如上面使用 kubeadm init 初始化 master 节点后输出的：</p>
@@ -900,7 +904,7 @@
   <p class="copyright-item">
     <span class="item-title">LastMod</span>
     <span class="item-content">
-        2023-10-08
+        2023-10-18
         
     </span>
   </p>

@@ -3,7 +3,7 @@ title: "Install Kubernetes v1.28.2 on Ubuntu 22.04"
 slug: install-kubernetes-v1-28-2-on-ubuntu-22-04
 type: post
 date: 2023-10-08
-lastMod: 2023-10-08
+lastMod: 2023-10-18
 showSummary: true
 summary: Kubernetes v1.28.2 安装记录
 tags:
@@ -14,11 +14,11 @@ tags:
 
 # 环境
 
-* Ubuntu 22.04
-* Docker 23.0.1
-* Kubernetes v1.28.2
+* ubuntu 22.04
+* docker 23.0.1
+* kubernetes v1.28.2
 
-# 安装 Docker
+# 安装 docker
 
 https://docs.docker.com/engine/install/ubuntu/
 
@@ -73,7 +73,7 @@ sudo systemctl status docker
 sudo docker info
 ```
 
-## 修改 Cgroup Driver 为 systemd
+## 修改 cgroup driver 为 systemd
 
 ```
 sudo docker info
@@ -99,7 +99,7 @@ Cgroup Driver: systemd
 sudo systemctl restart docker
 ```
 
-# 安装 Kubernetes
+# 安装 kubernetes
 
 ## 安装 kubectl
 
@@ -119,7 +119,7 @@ kubectl version --client --output=yaml
 
 https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/#installing-kubeadm-kubelet-and-kubectl
 
-### 安装 CNI 插件
+### 安装 cni 插件
 
 ```
 sudo mkdir -p /opt/cni/bin
@@ -180,7 +180,9 @@ sudo systemctl enable --now kubelet
 sudo systemctl status kubelet
 ```
 
-## 配置 Cgroup Driver
+## 配置 cgroup driver
+
+https://kubernetes.io/zh-cn/docs/tasks/administer-cluster/kubeadm/configure-cgroup-driver/
 
 > 在版本 1.22 及更高版本中，如果用户没有在 KubeletConfiguration 中设置 cgroupDriver 字段， kubeadm 会将它设置为默认值 systemd。
 
@@ -241,7 +243,7 @@ sudo chmod u+x k8s_v1.28.2_image.sh
 ./k8s_v1.28.2_image.sh
 ```
 
-把上面导出的文件 ssh 到要安装 Kubernetes 的机器上，再执行：
+将上面导出的文件 ssh 到对应的机器上，再执行下面的命令导入镜像：
 
 ```
 sudo docker load -i k8s_v1.28.2_image.tar
@@ -302,11 +304,13 @@ kubectl apply -f https://github.com/flannel-io/flannel/releases/download/v0.22.3
 
 ## 检查系统 pod 是否正常
 
+查看 pod：
+
 ```
 kubectl get pods -n kube-system
 ```
 
-pod 正常：
+pod 信息：
 
 ```
 NAME                                        READY   STATUS    RESTARTS   AGE
@@ -318,6 +322,8 @@ kube-controller-manager-liangjunmo-ubuntu   1/1     Running   0          15m
 kube-proxy-nhjz7                            1/1     Running   0          15m
 kube-scheduler-liangjunmo-ubuntu            1/1     Running   0          15m
 ```
+
+pod 正常。
 
 ## 部署 nginx 进行测试
 
@@ -366,7 +372,7 @@ nginx-deployment-54b6f7ddf9-2v6jt   0/1     Pending   0          29s
 nginx-deployment-54b6f7ddf9-mqdzv   0/1     Pending   0          29s
 ```
 
-pod 状态一直是 pending，查看详情：
+pod pending，查看详细信息：
 
 ```
 kubectl describe pod nginx-deployment-54b6f7ddf9-2v6jt
@@ -434,13 +440,15 @@ Taints:             <none>
 kubectl get pods
 ```
 
-pod 状态正常：
+pod 信息：
 
 ```
 NAME                                READY   STATUS    RESTARTS   AGE
 nginx-deployment-54b6f7ddf9-2v6jt   1/1     Running   0          5m13s
 nginx-deployment-54b6f7ddf9-mqdzv   1/1     Running   0          5m13s
 ```
+
+pod 正常。
 
 # 加入集群
 

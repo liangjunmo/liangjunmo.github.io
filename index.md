@@ -9,3 +9,7 @@ title: 首页
 
 * [我的 Vim 配置](/vim/)
 * [My first post](/first-post/)
+
+### Go
+
+* [Go main 包和 main 函数](/go-main/)

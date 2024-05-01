@@ -13,3 +13,4 @@ title: 首页
 ### Go
 
 * [Go main 包和 main 函数](/go-main/)
+* [Go init 函数](/go-init/)
